@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="repository"
+            type="com.tryzens.task.rest.data.RepositoriesData" />
+
+        <variable
+            name="itemClickInterface"
+            type="com.tryzens.task.ui.adapters.RepoAdapter.OnItemClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:elevation="2dp"
+        android:onClick="@{() -> itemClickInterface.onItemClick(repository)}"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/repository_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:adjustViewBounds="true"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/repository_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{repository.name}"
+            card_view:layout_constraintBottom_toBottomOf="@+id/textView"
+            card_view:layout_constraintStart_toEndOf="@+id/textView"
+            card_view:layout_constraintTop_toTopOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/item_name"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toEndOf="@+id/repository_img"
+            card_view:layout_constraintTop_toTopOf="@+id/repository_img" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/item_owner"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toEndOf="@+id/repository_img"
+            card_view:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/item_date"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toEndOf="@+id/repository_img"
+            card_view:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{repository.owner.login}"
+            card_view:layout_constraintBottom_toBottomOf="@+id/textView2"
+            card_view:layout_constraintStart_toEndOf="@+id/textView2"
+            card_view:layout_constraintTop_toTopOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{repository.created_at}"
+            card_view:layout_constraintBottom_toBottomOf="@+id/textView3"
+            card_view:layout_constraintStart_toEndOf="@+id/textView3"
+            card_view:layout_constraintTop_toTopOf="@+id/textView3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
